@@ -32,41 +32,47 @@ Many successful businesses have been built by building rich applications on top 
 Your task is to write client code that satisfies the following requirements:
 
 ### Client code
-There are two clients, X and Y (both essentially identical) that will communicate with a server. Clients X and Y will each open a TCP socket to your server and send a message to your server. The message contains the name of the client followed by your name (e.g., “Client X: Alice”, “Client Y: Bob”). 
-Later when clients receive a message back from the server, they should print the message that they sent to the server, followed by the reply received from the server. The following figures explain the problem.
-
-![Connection of clients to server](./imgs/figure1.png)
-
-![Response of server to clients](./imgs/figure2.png)
-
-The response message does not rely on the order of the connection establishment. If the connections are established in a different order the response will still be dependent only on the order of the messages:
-
-![Reversed order of conect](./imgs/figure1.png)
+There are two identical clients that will both communicate with the server.
+Each will open a TCP socket to the server and will send a message to it based on user input.
+When they send their message they should print the text of the message being sent to the server.
+Later when the clients receive a message back from the server they should print the response from the server.
 
 ### Server code
-The server will accept connections from both clients and after it has received messages from both X and Y, the server will print their messages and then send an acknowledgment back to your clients. 
-The acknowledgment from the server should contain the sequence in which the client messages were received (“X: Alice received before Y: Bob”, or “Y: Bob received before X: Alice”). 
-After the server sends out this message it should output a message saying - “Sent acknowledgment to both X and Y”. Your server can then terminate. 
-The server sits in an infinite loop listening for incoming TCP packets. 
-When a packet comes, the server simply sends it back to the client. 
-You can use the TCP server/client programs from the previous programming assignment as templates to start and then modify it to build your programming assignment.
 
-### Expected output
+The server will accept connections from both clients and wait for messages from each.
+The first client to establish a connection to the server will be referred to as "X" and the second client to connect to the server will be referred to as "Y".
+When the server has received messages from both the clients[^1] it will respond to both clients with a message consistent of the messages received from both clients in the order that they were received in.
 
-Case 1: When you type a message from Client X first:
+For example, if client X sends message "Hello!" and then client Y sends the message "Howdy!" then the client response is "X: 'Hello!', Y: 'Howdy!".
+See [example images](#example-images) for details
+
+### Example Images
+
+The first example shows the client on the left establishing a connection and sending a message, "Hello!" before the client on the right connects and sends its message "Howdy!"
+Therefore, the message from the server to both clients reads "X: 'Hello!', Y:'Howdy'". 
+
+<img src="./imgs/comm_example_1.png", height="600px", alt="Connection of clients to server (example 1)">
+
+---
+
+The second example shows the client on the left establishing a connection first but waits to send its message of "Hello" until after the client on the right establishes a connection and sends its message of "Howdy!".
+Therefore, the message from the server to both clients reads "Y: 'Howdy!', X: 'Hello!'".
+Note that the order of the messages recieved has changed.
 
 
-Case 2: When you type a message from Client Y first:
+<img src="./imgs/comm_example_2.png", height="600px", alt="Connection of clients to server (example 2)">
 
+---
+
+In this final example, the right-hand client establishes a connection before the left-hand client, and also sends a message before it.
+We now see the message from the server to both client reads "X: 'Howdy!', Y: 'Hello!'".
+Note that the client identifiers has changed.
+
+<img src="./imgs/comm_example_3.png", height="600", alt="Connection of clients to server (example 3)">
 
 ### Message Format
-The messages in this assignment are formatted in a simple way. The client message must look like:
-Client X: Alice
-Client Y: Bob
-The messages from server to client must look like (depending on the order of the received messages):
-X: Alice received before Y: Bob
-OR
-Y: Bob received before X: Alice
+The messages in this assignment are formatted in a simple way. The client message must consist of a simple text message (e.g. `Hello!` or `Howdy!` or some other string read in from the user).
+The messages from the server to the client must look like (depending on the order of connection establishment and received messages -- see [Example Images](example-images) for details): `X: 'Hello!', Y:'Howdy'`
 
 
 ## What to Hand in
@@ -108,3 +114,5 @@ You can modify the above server-client to create a simple chat service.
 ### Starter code
 
 Starter code can be found in the [src](src) directory.
+
+[^1]: Only the first message from each client is required to be stored but if you want to capture more it can be a fun challenge!
