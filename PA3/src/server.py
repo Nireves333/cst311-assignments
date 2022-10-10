@@ -1,7 +1,7 @@
 #!env python
 
 """Chat server for CST311 Programming Assignment 3"""
-
+__author__ = "[team name here]"
 __credits__ = [
   "Your",
   "Names",
