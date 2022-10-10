@@ -3,12 +3,13 @@
 
 READ INSTRUCTIONS CAREFULLY BEFORE YOU START THE ASSIGNMENT.
 
-Assignment must be submitted electronically to iLearn on https://csumb.instructure.com/ by 11:59 p.m. on the due date.  Late assignments will not be accepted. 
+Assignment must be submitted electronically to [Canvas](https://csumb.instructure.com/) by 11:59 p.m. on the due date.  Late assignments will not be accepted. 
 Use the Teams on the Programming Assignment Teams document (also on Canvas under General Information -> Team Information)
 Select your Team leader and divide up work per the Programming Process instructions (also on Canvas under General Information > Team Information.)
 
-The assignment requires you to submit both client and server programs. The naming convention of the file should be PA3_Server_Team<your team #>.py and PA3_Client_Team<your team #>.py
-Put your names in the program as well. Your client and server programs must meet the requirements below. Your program must have sufficient comments to clearly explain how your code works. Your code must compile to get partial credit.
+The assignment requires you to submit both client and server programs. The naming convention of the file should be `PA3_Server_Team<your team #>.py` and `PA3_Client_Team<your team #>.py`.
+Additionally, put your names in the program header, where indicated in the `__credits__` variable.
+Your client and server programs must meet the requirements below. Your program must have sufficient comments to clearly explain how your code works. Your code must compile to get partial credit.
 
 This assignment is worth 150 points. 
 
@@ -34,18 +35,21 @@ Your task is to write client code that satisfies the following requirements:
 There are two clients, X and Y (both essentially identical) that will communicate with a server. Clients X and Y will each open a TCP socket to your server and send a message to your server. The message contains the name of the client followed by your name (e.g., “Client X: Alice”, “Client Y: Bob”). 
 Later when clients receive a message back from the server, they should print the message that they sent to the server, followed by the reply received from the server. The following figures explain the problem.
 
-[Connection of clients to server](./imgs/figure1.png)
+![Connection of clients to server](./imgs/figure1.png)
 
-[Response of server to clients](./imgs/figure2.png)
+![Response of server to clients](./imgs/figure2.png)
 
 The response message does not rely on the order of the connection establishment. If the connections are established in a different order the response will still be dependent only on the order of the messages:
 
-
-[Reversed order of conect](./imgs/figure1.png)
+![Reversed order of conect](./imgs/figure1.png)
 
 ### Server code
-The server will accept connections from both clients and after it has received messages from both X and Y, the server will print their messages and then send an acknowledgment back to your clients. The acknowledgement from the server should contain the sequence in which the client messages were received (“X: Alice received before Y: Bob”, or “Y: Bob received before X: Alice”). After the server sends out this message it should output a message saying - “Sent acknowledgment to both X and Y”. Your server can then terminate. 
-The server sits in an infinite loop listening for incoming TCP packets. When a packet comes, the server simply sends it back to the client. You can use the TCP server/client programs from the previous programming assignment as templates to start and then modify it to build your programming assignment.
+The server will accept connections from both clients and after it has received messages from both X and Y, the server will print their messages and then send an acknowledgment back to your clients. 
+The acknowledgment from the server should contain the sequence in which the client messages were received (“X: Alice received before Y: Bob”, or “Y: Bob received before X: Alice”). 
+After the server sends out this message it should output a message saying - “Sent acknowledgment to both X and Y”. Your server can then terminate. 
+The server sits in an infinite loop listening for incoming TCP packets. 
+When a packet comes, the server simply sends it back to the client. 
+You can use the TCP server/client programs from the previous programming assignment as templates to start and then modify it to build your programming assignment.
 
 ### Expected output
 
@@ -95,48 +99,12 @@ Y: Bob received before X: Alice
 Teamwork grade: (50 points) Each team member will grade each other teammate out of 10 points during peer evaluation. I will average all team members’ grades and scale it to get your teamwork grade out of 50 points. Note that 30% of your grade will come from your teamwork and team member evaluations.
 
 ### Optional Extra-credit Exercises
-The extra credit part of this assignment is mainly for fun​ and is Challenging. You can modify the above server-client to create a simple chat service. 
+The extra credit part of this assignment is mainly for fun and is challenging.
+You can modify the above server-client to create a simple chat service. 
 - (10 points) Clients X and Y can only chat through the server. For example, every message that client X sends to the server, the server relays to client Y and vice versa. 
 - (5 points) When a client (say X) wants to exit the chat service it sends a “Bye” message. When a server sees a “Bye” message, it relays this message to Y and then terminates the connection to both clients. 
 - (5 points) Each client (say X) should output the messages sent by it and those received from Y. As this is a chat service the number/content of messages exchanged is not fixed. So your clients should have the capability to accept inputs (which are the content of the messages) from the keyboard. 
 
-### Example TCP Client-Server Code
-The following code fully implements a capitalization server and client. You can use this as your starter code for this assignment.
-Server Code
+### Starter code
 
-```
-#TCPCapitalizationServer.py
-from socket import *
-serverPort = 12000
-
-# Create a TCP socket
-# Notice the use of SOCK_STREAM for TCP packets
-serverSocket = socket(AF_INET,SOCK_STREAM)
-# Assign IP address and port number to socket
-serverSocket.bind(('',serverPort))
-serverSocket.listen(1)
-print ('The server is ready to receive')
-while True:
-     connectionSocket, addr = serverSocket.accept()  
-     sentence = connectionSocket.recv(1024).decode()
-     capitalizedSentence = sentence.upper()
-     connectionSocket.send(capitalizedSentence.encode())
-     connectionSocket.close()
-```
-
-
-Client Code
-```
-from socket import *
-# In your command prompt, type in hostname and press enter.
-# What comes up is your computer's hostname
-serverName = 'put your hostname here'
-serverPort = 12000
-clientSocket = socket(AF_INET, SOCK_STREAM)
-clientSocket.connect((serverName,serverPort))
-sentence = input('Input lowercase sentence:')
-clientSocket.send(sentence.encode())
-modifiedSentence = clientSocket.recv(1024)
-print ('From Server:', modifiedSentence.decode())
-clientSocket.close()
-```
+Starter code can be found in the [src](src) directory.
