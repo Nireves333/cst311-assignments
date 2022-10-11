@@ -48,27 +48,27 @@ See [example images](#example-images) for details
 
 ### Example Images
 
-The first example shows the client on the left establishing a connection and sending a message, "Hello!" before the client on the right connects and sends its message "Howdy!"
-Therefore, the message from the server to both clients reads "X: 'Hello!', Y:'Howdy'". 
+The first example shows the client on the left establishing a connection and sending a message, `Hello!` before the client on the right connects and sends its message `Howdy!`.
+Therefore, the message from the server to both clients reads `X: 'Hello!', Y:'Howdy'`. 
 
-<img src="./imgs/comm_example_1.png", height="600px", alt="Connection of clients to server (example 1)">
+<img src="imgs/comm_example_1.png" height="400" alt="Connection of clients to server (example 1)">
 
 ---
 
-The second example shows the client on the left establishing a connection first but waits to send its message of "Hello" until after the client on the right establishes a connection and sends its message of "Howdy!".
-Therefore, the message from the server to both clients reads "Y: 'Howdy!', X: 'Hello!'".
+The second example shows the client on the left establishing a connection first but waits to send its message of `Hello!` until after the client on the right establishes a connection and sends its message of `Howdy!`.
+Therefore, the message from the server to both clients reads `Y: 'Howdy!', X: 'Hello!'`.
 Note that the order of the messages recieved has changed.
 
 
-<img src="./imgs/comm_example_2.png", height="600px", alt="Connection of clients to server (example 2)">
+<img src="./imgs/comm_example_2.png" height="400" alt="Connection of clients to server (example 2)">
 
 ---
 
 In this final example, the right-hand client establishes a connection before the left-hand client, and also sends a message before it.
-We now see the message from the server to both client reads "X: 'Howdy!', Y: 'Hello!'".
+We now see the message from the server to both client reads `X: 'Howdy!', Y: 'Hello!'`.
 Note that the client identifiers has changed.
 
-<img src="./imgs/comm_example_3.png", height="600", alt="Connection of clients to server (example 3)">
+<img src="./imgs/comm_example_3.png" height="400" alt="Connection of clients to server (example 3)">
 
 ### Message Format
 The messages in this assignment are formatted in a simple way. The client message must consist of a simple text message (e.g. `Hello!` or `Howdy!` or some other string read in from the user).
