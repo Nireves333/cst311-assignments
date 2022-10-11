@@ -29,7 +29,7 @@ There are an endless number of applications that rely on the kind of communicati
 Many successful businesses have been built by building rich applications on top of a TCP/IP service such as the one you will create in this assignment.
 
 ## Task
-Your task is to write client code that satisfies the following requirements:
+Your task is to write client and server code that satisfies the following requirements:
 
 ### Client code
 There are two identical clients that will both communicate with the server.
