@@ -118,7 +118,7 @@ Create a git branch where you can modify the server-client to do one or more of 
 
 - [ ] (10 points) **Clients X and Y can chat on the server.**  Create a branch of your code that allows for messages to be forwarded from one client to the other immediately.
 - [ ] (5 points) **Chat exit.**  When a client sends a message "Bye" this message is relayed to the other client and both connections are closed.
-- [ ] (5 points) **Chat history.*** Each client should output its messages followed by the messages from the other client that were forwarded by the server.  Note that as this is a chat service the number/content of messages exchanged is not fixed. So your clients should have the capability to accept inputs (which are the content of the messages) from the keyboard. 
+- [ ] (5 points) **Chat history.** Each client should output its messages followed by the messages from the other client that were forwarded by the server.  Note that as this is a chat service the number/content of messages exchanged is not fixed. So your clients should have the capability to accept inputs (which are the content of the messages) from the keyboard. 
 
 ### Starter code
 
