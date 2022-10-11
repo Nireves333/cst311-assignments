@@ -72,7 +72,7 @@ Note that the client identifiers has changed.
 
 ### Message Format
 The messages in this assignment are formatted in a simple way. The client message must consist of a simple text message (e.g. `Hello!` or `Howdy!` or some other string read in from the user).
-The messages from the server to the client must look like (depending on the order of connection establishment and received messages -- see [Example Images](example-images) for details): `X: 'Hello!', Y:'Howdy'`
+The messages from the server to the client must look like (depending on the order of connection establishment and received messages -- see [Example Images](#example-images) for details): `X: 'Hello!', Y:'Howdy'`
 
 
 ## What to Hand in
