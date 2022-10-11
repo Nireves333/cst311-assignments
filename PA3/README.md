@@ -64,11 +64,19 @@ Note that the order of the messages recieved has changed.
 
 ---
 
-In this final example, the right-hand client establishes a connection before the left-hand client, and also sends a message before it.
+In this example, the right-hand client establishes a connection before the left-hand client, and also sends a message before it.
 We now see the message from the server to both client reads `X: 'Howdy!', Y: 'Hello!'`.
 Note that the client identifiers has changed.
 
 <img src="./imgs/comm_example_3.png" height="400" alt="Connection of clients to server (example 3)">
+
+--- 
+
+Finally, a test run should look similar to the below, although your logging messages (via the python `logging` class) may look different, and the final output may be different than described below.
+
+<img src="./imgs/example_run.png" height="400" alt="Connection of clients to server (example 3)">
+
+
 
 ### Message Format
 The messages in this assignment are formatted in a simple way. The client message must consist of a simple text message (e.g. `Hello!` or `Howdy!` or some other string read in from the user).
