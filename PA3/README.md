@@ -86,30 +86,38 @@ The messages from the server to the client must look like (depending on the orde
 
 ## Grading Criteria
 
-### Client-specific requirements
-- (5 points) You must use TCP sockets; you will need to establish a connection first, since it is a connection oriented protocol.
-- (5 points) Clients must initiate the connection by sending their connection requests to the server one client at a time.
+- [ ] ***Common Requirements***
+  - [ ] (5 points) Clients and servers much use TCP sockets; you will need to establish a connection first since it is a connection-oriented protocol.
+  - [ ] (10 points) Execution should be run on mininet virtual machine (but not necessarily within the mininet simulation).
+  - [ ] (10 points) Program must be well documented.
+  - [ ] (20 points) Explain **why** and **how** you need multithreading to solve this problem. Put this in a comment at the top of your server code.
 
-### Server-specific Requirements
-- (5 points) The server must accept connections from both clients first BEFORE receiving the messages from either client.
-- (5 points) Server establishes the first client that made a connection as Client X and the second one as client Y.
-- (5 points) After establishing a connection with both Clients, Server sends a message to both clients stating that a connection has been established. The message from the server must indicate which client is X and which client is Y. (Message to clients must look like: “Client X connected” or “Client Y connected”.)
-- (5 points) Server receives messages from both clients (in any order) and establishes which message it received first.
-- (10 points) Server sends acknowledgements to both clients stating which message was received first. (Message to clients must look like: “Y: First_message received before X: Second_message” or “X: First_message received before Y: Second_message”.)
-- (10 points) The response string from Server to Clients (“X: First_message received before Y: Second_message”, or “Y: First_message received before X: Second_message”) must be in the order the messages from Client X or Client Y are received at the server and NOT the order in which the clients X and Y connected to the server. 
-  - ***Note: You will need multithreading and a way to share data between threads to achieve this.***
-- (10 points) Your program should print out the messages received by the client and server at the receiving end.
-- (10 points) Execute your programs on your mininet virtual machine. 
-- (20 points) Explain why you need multithreading to solve this problem. Put this in a comment at the top of your server code.
-- (10 points) Program must be well documented.
-Teamwork grade: (50 points) Each team member will grade each other teammate out of 10 points during peer evaluation. I will average all team members’ grades and scale it to get your teamwork grade out of 50 points. Note that 30% of your grade will come from your teamwork and team member evaluations.
+- [ ] ***Client-oriented Requirements***
+  - [ ] (5 points) Clients must initiate the connection by sending their connection requests to the server one client at a time.
+  - [ ] (5 points) Clients should print response from server.
+
+- [ ] ***Server-oriented Requirements***
+  - [ ] (5 points) Server establishes the first client that made a connection as Client X and the second one as client Y.
+  - [ ] (10 points) Serve must establish a connection with both clients simultaneously.
+      - ***Note: You will need multithreading and a way to share data between threads to achieve this.***
+  - [ ] (5 points) Server receives messages from both clients (in any order) and establishes which message it received first.
+  - [ ] (10 points) Server sends acknowledgements to both clients stating which message was received first. (Message to clients must look like those described in the [Message Format section](#message-format).
+  - [ ] (10 points) Server response message must have clients labelled properly (5 points), and be in proper order based on message receipt (5 points).
+  - [ ] (5 points) Server should print messages received from clients.
+
+- [ ] ***(50 points) Teamwork grade***
+  - Each student should fill out the [Peer Evaluation form](https://docs.google.com/forms/d/e/1FAIpQLSdp2MFKtzolbP0nZ5yq9hnNVyEOFeGUoX4m-LneKczyNPm3FQ/viewform?usp=send_form) for each of their teammates.  Effort will be graded based on reported student effort
+    - An average of 3 or higher corresponds to full points
+    - An average below 3 will be scaled between maximum points and 0
+    - If you do not fill out the form you will lose half of your overall teamwork grade points
+
 
 ### Optional Extra-credit Exercises
 The extra credit part of this assignment is mainly for fun and is challenging.
 You can modify the above server-client to create a simple chat service. 
-- (10 points) Clients X and Y can only chat through the server. For example, every message that client X sends to the server, the server relays to client Y and vice versa. 
-- (5 points) When a client (say X) wants to exit the chat service it sends a “Bye” message. When a server sees a “Bye” message, it relays this message to Y and then terminates the connection to both clients. 
-- (5 points) Each client (say X) should output the messages sent by it and those received from Y. As this is a chat service the number/content of messages exchanged is not fixed. So your clients should have the capability to accept inputs (which are the content of the messages) from the keyboard. 
+- [ ] (10 points) Clients X and Y can only chat through the server. For example, every message that client X sends to the server, the server relays to client Y and vice versa. 
+- [ ] (5 points) When a client (say X) wants to exit the chat service it sends a “Bye” message. When a server sees a “Bye” message, it relays this message to Y and then terminates the connection to both clients. 
+- [ ] (5 points) Each client (say X) should output the messages sent by it and those received from Y. As this is a chat service the number/content of messages exchanged is not fixed. So your clients should have the capability to accept inputs (which are the content of the messages) from the keyboard. 
 
 ### Starter code
 
