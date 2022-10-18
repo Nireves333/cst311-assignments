@@ -2,6 +2,7 @@
 
 ## Background 
 
+
 By default, github doesn't allow you to set up private forks of repositories.  
 Therefore, to ensure that only you and your team can access your repository and thus your code, you have to take a few extra steps to set up your copy of the code, while still ensuring you can get updates if we make any.
 
