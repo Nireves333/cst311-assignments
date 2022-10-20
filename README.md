@@ -18,7 +18,7 @@ To pull in upstream updates (i.e. updates made to this repository) please  follo
 
 ## Programming Assignments currently included
 
-- [Programming Assignment 1](PA1) (coming soon)
+- [Programming Assignment 1](PA1)
 - [Programming Assignment 2](PA2) (coming soon)
 - [Programming Assignment 3](PA3)
 - [Programming Assignment 4](PA4) (coming soon)
