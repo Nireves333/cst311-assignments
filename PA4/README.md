@@ -67,20 +67,24 @@ I suggest executing that program and studying it to understand how you will need
 ### What to include in your .zip file
 - Your working`legacy_router.py` code.
 - Minutes of the 3 meetings.
-- A pdf file with screenshots of the working `legacy_router.py`.
-- In the same pdf file with screenshots, draw the network sketches as asked in the first two grading objectives, and also answer the questions from the grading objective 7.
+- A pdf file containing
+  - Screenshots of the working `legacy_router.py`.
+  - Network sketches as asked in the first two grading objectives
+  - Answer the questions from the grading objective 7.
 
 ### Grading Objectives
-- [ ] (5 points) Network design of the script given in this document and show, in the diagram - what is missing/incorrect?
-- [ ] (5 points) Correct Network Design which allows h1 to ping h2 and for h2 to be able to ping h1. Draw and submit the network design in pdf format with IPs of all interfaces labelled. Also label the hosts as h1 and h2 and the switch as S/R.
-- [ ] (5 points) Screen capture of the program that runs with no Python errors.
-- [ ] (5 points) Screen capture of successful ‘ h1 ping h2 ’ at the minnet> prompt.
-- [ ] (5 points) Screen capture of successful ‘ h2 ping h1 ’ at the minnet> prompt.
-- [ ] (5 points) Your modified legacy_router.py program as a separate python file.
-- [ ] (35 points) Answers to these questions:
+
+- [ ] 1. (5 points) Network design of the script given in this document and show, in the diagram - what is missing/incorrect?
+- [ ] 2. (5 points) Correct Network Design which allows h1 to ping h2 and for h2 to be able to ping h1. Draw and submit the network design in pdf format with IPs of all interfaces labelled. Also label the hosts as h1 and h2 and the switch as S/R.
+- [ ] 3. (5 points) Screen capture of the program that runs with no Python errors.
+
+- [ ] 4. (5 points) Screen capture of successful ‘ h1 ping h2 ’ at the minnet> prompt.
+- [ ] 5. (5 points) Screen capture of successful ‘ h2 ping h1 ’ at the minnet> prompt.
+- [ ] 6. (5 points) Your modified legacy_router.py program as a separate python file.
+- [ ] 7. (35 points) Answers to these questions:
   - [ ] What were any interesting findings and lessons learned ?
   - [ ] Why didn’t the original program forward packets between the hosts?
   - [ ] Is the line ‘ r1.cmd('sysctl -w net.ipv4.ip_forward=1') ’ required?
   - [ ] Intentionally break your working program, e.g.: change a subnet length, IP address, or default route for a host. Explain why your change caused the network to break.
-- [ ] (5 points) Submission files are in order - 1 pdf document and 1 python script. Minutes of the 3 meetings. Program must be well documented.
-- [ ] Teamwork grade: (30 points) Each team member will grade each other teammate out of 10 points during peer evaluation. I will average all team members’ grades and scale it to get your teamwork grade out of 30 points. Note that 30% of your grade will come from your teamwork and team member evaluations.
+- [ ] 8. (5 points) Submission files are in order - 1 pdf document and 1 python script. Minutes of the 3 meetings. Program must be well documented.
+- [ ] 9. Teamwork grade: (30 points) Each team member will grade each other teammate out of 10 points during peer evaluation. I will average all team members’ grades and scale it to get your teamwork grade out of 30 points. Note that 30% of your grade will come from your teamwork and team member evaluations.
