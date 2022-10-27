@@ -1,22 +1,17 @@
 # Programming Assignment 4
-## CST 311, Introduction to Computer Networks, Spring 2022
+## CST 311, Introduction to Computer Networks
+
 READ INSTRUCTIONS CAREFULLY BEFORE YOU START THE ASSIGNMENT.
 
-This programming assignment is due on Sunday, Apr 24, 2022.
-Assignment must be submitted electronically to [Canvas](https://csumb.instructure.com/) by 11:59 p.m. on the due date.  
-Late assignments will not be accepted.
-
-Use the Teams on the Programming Assignment Teams document (also on Canvas under General Information > Team Information).
+Assignment must be submitted electronically to [Canvas](https://csumb.instructure.com/) by 11:59 p.m. on the due date. Late assignments will not be accepted. Use the Teams on the Programming Assignment Teams document (also on Canvas under General Information > Team Information).
 Select your Team leader and divide up work per the Programming Process instructions (also on Canvas under General Information > Team Information.)
 
 
-The assignment requires you to submit a single python program. 
-The naming convention of the file should be PA4_Team<your team #>.py
+The assignment requires you to submit a single python program. The naming convention of the file should be PA4_Team<your team #>.py
 Put your names in the program as well. 
 
-Your client and server programs must meet the requirements below. 
+Your program must meet the requirements below. 
 Your program must have sufficient comments to clearly explain how your code works.
-Your code must compile to get partial credit.
 
 This assignment is worth 100 points outlined [below](#grading-objectives)
 
@@ -27,7 +22,7 @@ You will modify it such that the two hosts can send packets to each other.
 It requires that you understand subnet addressing and the function of a router.
 
 The network built using Miniedit on a Mininet virtual machine:
-python mininet/examples/miniedit.py
+`python mininet/examples/miniedit.py`
 
 <img src="imgs/miniedit.png" alt="miniedit screenshot" width="600">
 
@@ -59,21 +54,21 @@ From 10.0.0.1 icmp_seq=2 Destination Host Unreachable
 From 10.0.0.1 icmp_seq=3 Destination Host Unreachable
 ```
 
-Your task is to modify this program (perhaps using different IP addresses) such that the legacy  router is able to forward packets between the two hosts.
+Your task is to modify this program (perhaps using different IP addresses) such that the legacy router is able to forward packets between the two hosts.
 You will need to understand Internet addressing, subnets, and the function of a router as described in the “IPv4 Addressing” Section of Kurose and Ross. 
 
-You may also find the example Python programs in mininet/examples helpful; in particular linuxrouter.py .
-I suggest executing that program and studying it to understand how you will need to modify legacy_router.py.
+You may also find the example Python programs in mininet/examples helpful; in particular `linuxrouter.py`.
+I suggest executing that program and studying it to understand how you will need to modify `legacy_router.py`.
 
 ### Expected output
 
 <img src="imgs/output.png" alt="screenshot of successful run">
 
-### What to Hand in
-You will hand in the working legacy_router.py  code to iLearn.
-Minutes of the 3 meetings.
-Make a pdf file with screenshots of working legacy_router.py. Please do not upload the screenshots as image files.
-In the same pdf file with screenshots, draw the network sketches as asked in grading objective 1 and 2 and also answer the questions from the grading objective 7.
+### What to include in your .zip file
+- Your working`legacy_router.py` code.
+- Minutes of the 3 meetings.
+- A pdf file with screenshots of the working `legacy_router.py`.
+- In the same pdf file with screenshots, draw the network sketches as asked in the first two grading objectives, and also answer the questions from the grading objective 7.
 
 ### Grading Objectives
 - [ ] (5 points) Network design of the script given in this document and show, in the diagram - what is missing/incorrect?
