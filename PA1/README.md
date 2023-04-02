@@ -132,9 +132,9 @@ Grading Objectives
 
 ### What to Hand in
 
-Since the code is already given, you need not submit python files for this assignment. 
 You will hand in the following:
-- Screenshots of the working UDP and TCP client/server programs for all test cases given above.
-- Minutes of meeting including: Team Lead name, attendance, work division narrative (1-2 lines is good enough).
-- You must also fill in the peer evaluation form for teamwork grade. 
+- [ ] Screenshots of the working UDP and TCP client/server programs for all test cases given above.
+- [ ] Minutes of meeting including: Team Lead name, attendance, work division narrative (1-2 lines is good enough).
+- [ ] You must also fill in the peer evaluation form for teamwork grade. 
+- [ ] Source code modified to work within mininet
 
