@@ -125,7 +125,7 @@ You will hand in the complete client and server code to Canvas.
 - [ ] (10 points) You must write the client code to do the assignment with the calculations in #3 above without the use of a list (or array). Find an efficient and effective use of storage and program speed.
 - [ ] (5 points) Programs must be well documented.
 - [ ] (5 points) Submission files are in order. (Look at the “What to hand in” section.)
-- [ ] (50 points) Teamwork grade
+- [ ] ***(50 points) Teamwork grade***
   - Each team member will grade each other teammate out of 10 points during peer evaluation. 
   I will average all team members’ grades and scale it to get your teamwork grade out of 50 points. 
   
