@@ -126,7 +126,7 @@ You will hand in the complete client and server code to Canvas.
 - [ ] (5 points) Programs must be well documented.
 - [ ] (5 points) Submission files are in order. (Look at the “What to hand in” section.)
 - [ ] ***(50 points) Teamwork grade***
-  - Each team member will grade each other teammate out of 10 points during peer evaluation. 
+  - Each team member will grade each other teammate out of 10 points during [peer evaluation](https://forms.gle/vtt31GjK9Rrerews5). 
   I will average all team members’ grades and scale it to get your teamwork grade out of 50 points. 
   
 

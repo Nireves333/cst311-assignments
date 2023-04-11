@@ -126,7 +126,7 @@ Grading Objectives
 - [ ] Documentation Grades
   - [ ] (10 points) All screenshots in one pdf file. Include one Minutes of meeting pdf file.
 - [ ] Teamwork grade:
-  - [ ] (30 points) Each team member will grade each other teammate out of 4 points during peer evaluation. 
+  - [ ] (30 points) Each team member will grade each other teammate out of 4 points during [peer evaluation](https://forms.gle/vtt31GjK9Rrerews5). 
     - I will average all team members’ grades and scale it to get your teamwork grade out of 30 points. 
     - Note that 30% of your grade will come from your teamwork and team member evaluations.
 
@@ -135,6 +135,6 @@ Grading Objectives
 You will hand in the following:
 - [ ] Screenshots of the working UDP and TCP client/server programs for all test cases given above.
 - [ ] Minutes of meeting including: Team Lead name, attendance, work division narrative (1-2 lines is good enough).
-- [ ] You must also fill in the peer evaluation form for teamwork grade. 
+- [ ] You must also fill in the [peer evaluation form](https://forms.gle/vtt31GjK9Rrerews5) for teamwork grade. 
 - [ ] Source code modified to work within mininet
 
