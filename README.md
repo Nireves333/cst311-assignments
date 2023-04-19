@@ -40,4 +40,4 @@ You can help fix problems in one of two ways:
 ## Peer Evaluation
 
 For each project it is important to fill out the [peer evaluation form](https://forms.gle/vtt31GjK9Rrerews5).
-Failure to do so will result in a 0 for your peer evaluation rating leading to a loss of points.
+Failure to do so will result in a 0 for your peer evaluation rating leading to a loss of some points.
