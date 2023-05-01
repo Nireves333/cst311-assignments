@@ -1,11 +1,12 @@
 #!env python
 
 """TCP Client for CST311 Programming Assignment 1"""
-__author__ = "[team name here]"
+__author__ = "Team 3"
 __credits__ = [
-  "Your",
-  "Names",
-  "Here"
+  "Andi Cameron",
+  "Michelle Brown",
+  "Nathan Simpson",
+  "Severin Light"
 ]
 
 
@@ -20,7 +21,7 @@ log.setLevel(logging.DEBUG)
 
 import TCPServer
 
-server_host = "localhost"
+server_host = '10.0.0.1'
 
 def main():
   
