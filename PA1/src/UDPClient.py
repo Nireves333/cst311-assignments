@@ -1,11 +1,12 @@
 #!env python
 
 """UDP client for CST311 Programming Assignment 1"""
-__author__ = "[team name here]"
+__author__ = "Team 3"
 __credits__ = [
-  "Your",
-  "Names",
-  "Here"
+  "Andi Cameron",
+  "Michelle Brown",
+  "Nathan Simpson",
+  "Severin Light"
 ]
 
 # Import the socket module as a named module to help keep our namespace clean
@@ -21,7 +22,7 @@ log.setLevel(logging.DEBUG)
 import UDPServer
 
 # localhost is shorthand for our current host.  If talking to a different host this should be changed
-server_host = 'localhost'
+server_host = '10.0.0.1'
 # We grab the server port from our server so we are guaranteed to be using the same one
 server_port = UDPServer.SERVER_PORT
 
