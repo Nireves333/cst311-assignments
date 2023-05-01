@@ -1,5 +1,3 @@
-#!env python
-
 """TCP Client for CST311 Programming Assignment 1"""
 __author__ = "Team 3"
 __credits__ = [
