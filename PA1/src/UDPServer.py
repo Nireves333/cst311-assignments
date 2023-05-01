@@ -1,11 +1,12 @@
 #! env python
 
 """UDP server for CST311 Programming Assignment 1"""
-__author__ = "[team name here]"
+__author__ = "Team 3"
 __credits__ = [
-  "Your",
-  "Names",
-  "Here"
+  "Andi Cameron",
+  "Michelle Brown",
+  "Nathan Simpson",
+  "Severin Light"
 ]
 
 # Import the socket module as a named module to help keep our namespace clean
@@ -31,7 +32,7 @@ def handle_client_request(server_socket, message, client_addr):
   :return:
   """
   
-  log.debug("Recieved message: \"" + message + "\" from client @ \"" + client_addr + "\"")
+  log.debug("Received message: \ '{}' \ from client @ \ '{}'".format(message, client_addr))
   
   # Does two things:
   ## 1. decode message -- messages are transmitted as a UTF-8 bytestream so we have to decode them
