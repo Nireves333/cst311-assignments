@@ -1,15 +1,15 @@
-#!env python
-
 """TCP server for CST311 Programming Assignment 1"""
-__author__ = "[team name here]"
+__author__ = "Team 3"
 __credits__ = [
-  "Your",
-  "Names",
-  "Here"
+  "Andi Cameron",
+  "Michelle Brown",
+  "Nathan Simpson",
+  "Severin Light"
 ]
 
 
 import socket as s
+
 
 # Import and configure logging
 import logging
@@ -69,5 +69,3 @@ def main():
   
 if __name__ == "__main__":
   main()
-
-
