@@ -21,35 +21,35 @@ def main():
   
   # Create a UDP socket
   # Notice the use of SOCK_DGRAM for UDP packets
-  serverSocket = s.socket(s.AF_INET, s.SOCK_DGRAM)
+  with s.socket(s.AF_INET, s.SOCK_DGRAM) as socket:
   
-  # Assign IP address and port number to socket
-  serverSocket.bind(('', SERVER_PORT))
+    # Assign IP address and port number to socket
+    socket.bind(('', SERVER_PORT))
   
-  log.info("Waiting for client.")
+    log.info("Waiting for client.")
   
-  pingnum = 0
+    pingnum = 0
   
-  while True:
+    while True:
     
-    # Count the pings received
-    pingnum += 1
+      # Count the pings received
+      pingnum += 1
     
-    # Generate random number in the range of 0 to 10
-    rand = random.randint(0, 10)
+      # Generate random number in the range of 0 to 10
+      rand = random.randint(0, 10)
     
-    # Receive the client packet along with the
-    # address it is coming from
-    message, address = serverSocket.recvfrom(1024)
+      # Receive the client packet along with the
+      # address it is coming from
+      message, address = socket.recvfrom(1024)
     
-    # If rand is less is than 4, and this not the
-    # first "ping" of a group of 10, consider the
-    # packet lost and do not respond
-    if rand < 4 and pingnum % 10 != 1:
-      continue
+      # If rand is less is than 4, and this not the
+      # first "ping" of a group of 10, consider the
+      # packet lost and do not respond
+      if rand < 4 and pingnum % 10 != 1:
+        continue
       
-    # Otherwise, the server responds
-    serverSocket.sendto(message, address)
+      # Otherwise, the server responds
+      socket.sendto(message, address)
 
 if __name__ == "__main__":
   main()
