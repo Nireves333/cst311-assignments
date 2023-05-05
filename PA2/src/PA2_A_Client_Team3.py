@@ -7,22 +7,12 @@ __credits__ = [
   "Severin Light"
 ]
 
-# Import the socket module as a named module to help keep our namespace clean
 import socket as s
-import os
-import subprocess
 import time
-
-# Import and configure logging
-import logging
-logging.basicConfig()
-log = logging.getLogger(__name__)
-log.setLevel(logging.DEBUG)
-
-# DELETE? import PA2_A_Server_Team3
+import PA2_A_Server_Team3
 
 server_host = '10.0.0.1'
-server_port = 12001
+server_port = PA2_A_Server_Team3.SERVER_PORT
 
 def main():
   
@@ -38,36 +28,54 @@ def main():
     # Ping server 10 times
     for i in range(1, 11):
       
-      try:
-        ## TODO check if ping should actually be used or client sends message because server code has a message received line in code
-        # Execute ping command and get output
-        ping_output = subprocess.check_output(['ping', '-c', '1', server_host]).decode()
-        
-        # Extract RTT value from ping output
-        for line in ping_output.split('\n'):
-          if 'time=' in line:
-            rtt_str = line.split('time=')[1].split(' ')[0]
-            # Store RTT value
-            rtt.append(float(rtt_str))
-        
-        ## TODO fix print message to match expected output (need sample_rtt, estimated_rtt, dev_rtt)
-        # Print message
-        print('Ping {}: rtt = {} ms'.format(str(i), rtt_str))
+      # Get start time
+      start_time = time.time()
+      message = 'Ping {}'.format(str(i))
       
-      ## TODO fix timeout because it is not working properly
+      # Try to send message
+      try:
+        
+        # Send message to server
+        socket.sendto(message.encode(), (server_host, server_port))
+        
+        # If no message received from server
+        if socket.recvfrom(1024) == None:
+          print('Ping {}: Request timed out'.format(str(i)))
+        
+        # Otherwise, record RTT values
+        else:
+          
+          # Get end time
+          end_time = time.time()
+        
+          # Calculate elapsed time aka RTT
+          elapsed = (end_time - start_time) * 1000
+        
+          # Add RTT value to list
+          rtt.append(elapsed)
+        
+          ## TODO fix print message to match expected output (need sample_rtt, estimated_rtt, dev_rtt)
+          # Print message
+          print('Ping {}: rtt = {:.3f} ms'.format(str(i), elapsed))
+      
+      # Exception happens when timeout is one second or more
       except s.timeout:
-        # Print message
-        print('Ping {}: Request timed out'.format(str(i)))
+          # Print message
+          print('Ping {}: Request timed out'.format(str(i)))
     
-    # Print summary values
-    print('Summary values')
-    print('min_rtt = {} ms'.format(min(rtt)))
-    print('max_rtt = {} ms'.format(max(rtt)))
+    # Print summary values header
+    print('Summary values:')
+    # Print minimum RTT value
+    print('min_rtt = {:.3f} ms'.format(min(rtt)))
+    # Print maximum RTT value
+    print('max_rtt = {:.3f} ms'.format(max(rtt)))
+    # Calculate and print mean RTT value
     mean = sum(rtt) / float(len(rtt))
-    print('ave_rtt = {} ms'.format(mean))
-    print('Packet loss: {}%'.format((10 - len(rtt)) * 10))
+    print('ave_rtt = {:.3f} ms'.format(mean))
+    # Print packet loss percentage
+    print('Packet loss: {:.2f}%'.format((10 - len(rtt)) * 10))
     ## TODO calculate timeout interval
-    print('Timeout Interval: ms')
+    print('Timeout Interval: ms\n')
       
   # Close socket    
   socket.close()
