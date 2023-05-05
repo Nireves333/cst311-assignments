@@ -1,5 +1,5 @@
 #!env python
-"""UDP server for CST311 Programming Assignment 2"""
+"""UDP client for CST311 Programming Assignment 2"""
 __author__ = "Team 3"
 __credits__ = [
   "Andi Cameron",
