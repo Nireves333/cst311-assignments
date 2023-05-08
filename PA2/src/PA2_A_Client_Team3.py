@@ -57,6 +57,7 @@ def main():
           # Add RTT value to list
           sample_rtt.append(elapsed)
           
+          ## Does not add up when 1st Ping times out. Unsure if we need to actually fix that, I have a feeling it's the output checkers fault due to it calculating a zero. 
           # Set initial ERTT or calculate current ERTT, formula taken from textbook
           if len(estimated_rtt) == 0:
             est_elapsed = elapsed
@@ -65,6 +66,7 @@ def main():
             est_elapsed = (0.875 * est_elapsed) + (0.125 * elapsed)
             estimated_rtt.append(est_elapsed)
           
+          ## Does not add up when 1st Ping times out. Unsure if we need to actually fix that, I have a feeling it's the output checkers fault due to it calculating a zero.
           # Set initial Dev_RTT or calculate current Dev_RTT, formula taken from textbook
           if len(dev_rtt) == 0:
             dev_elapsed = elapsed / 2
@@ -78,7 +80,7 @@ def main():
       
       # Exception happens when timeout is one second or more
       except s.timeout:
-          # Print message, also appends 0 to each list for accurate calculations
+          # Print message
           print('Ping {}: Request timed out'.format(str(i)))
     
     for i, num in enumerate(estimated_rtt):
