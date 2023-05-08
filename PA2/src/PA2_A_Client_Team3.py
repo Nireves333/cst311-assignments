@@ -27,6 +27,9 @@ def main():
     estimated_rtt = []
     dev_rtt = []
     
+    # Initialize elapsed time
+    elapsed = 0
+    
     # Ping server 10 times
     for i in range(1, 11):
       
@@ -42,37 +45,44 @@ def main():
         
         # If no message received from server
         if socket.recvfrom(1024) == None:
+          # Print message
           print('Ping {}: Request timed out'.format(str(i)))
-          
+          # Add sample RTT to list
+          sample_rtt.append(elapsed)
+          # Add estimated RTT to list
+          estimated_rtt.append(elapsed)
+          # Add dev RTT to list
+          dev_elapsed = elapsed / 2
+          dev_rtt.append(dev_elapsed)
         
         # Otherwise, record RTT values
         else:
           
           # Get end time
           end_time = time.time()
-        
-          # Calculate elapsed time aka RTT
+          # Calculate elapsed time aka sample RTT
           elapsed = (end_time - start_time) * 1000
-        
-          # Add RTT value to list
+          # Add sample RTT to list
           sample_rtt.append(elapsed)
           
           ## Does not add up when 1st Ping times out. Unsure if we need to actually fix that, I have a feeling it's the output checkers fault due to it calculating a zero. 
-          # Set initial ERTT or calculate current ERTT, formula taken from textbook
+          # Set initial estimated RTT or calculate current estimated RTT and add to list
+          # Formula from textbook, page ???
           if len(estimated_rtt) == 0:
             est_elapsed = elapsed
-            estimated_rtt.append(elapsed)
+            estimated_rtt.append(est_elapsed)
           else:
             est_elapsed = (0.875 * est_elapsed) + (0.125 * elapsed)
             estimated_rtt.append(est_elapsed)
           
           ## Does not add up when 1st Ping times out. Unsure if we need to actually fix that, I have a feeling it's the output checkers fault due to it calculating a zero.
-          # Set initial Dev_RTT or calculate current Dev_RTT, formula taken from textbook
+          # Set initial dev RTT or calculate current dev RTT and add to list
+          # Formula from textbook, page ???
           if len(dev_rtt) == 0:
             dev_elapsed = elapsed / 2
             dev_rtt.append(dev_elapsed)
           else:
-            dev_elapsed = (0.75 * dev_elapsed) + (.25 * abs(elapsed - est_elapsed))
+            dev_elapsed = (0.75 * dev_elapsed) + (0.25 * abs(elapsed - est_elapsed))
             dev_rtt.append(dev_elapsed)
                
           # Print message
@@ -82,9 +92,6 @@ def main():
       except s.timeout:
           # Print message
           print('Ping {}: Request timed out'.format(str(i)))
-    
-    for i, num in enumerate(estimated_rtt):
-      print("estimated_rtt:", num)
     
     # Print summary values header
     print('Summary values:')
@@ -102,20 +109,22 @@ def main():
     # Print packet loss percentage
     print('Packet loss: {:.2f}%'.format((10 - len(sample_rtt)) * 10))
     
-    # Books formula: TimeoutInterval = EstimatedRTT + 4 x DevRTT
-    # TimeoutInterval grabs the last index of estimated_rtt and dev_rtt
-    # Grabs the last float that is not 0 in estimated_rtt
+    # Calculate timeout interval by using the last index of estimated_rtt and dev_rtt
+    # Get last float that is not 0 in estimated_rtt list
     for i, est in enumerate(reversed(estimated_rtt)):
       if est > 0:
         final_est = est
         break
-    # Grabs the last float that is not 0 in dev_rtt  
+    # Get last float that is not 0 in dev_rtt list
     for i, dev in enumerate(reversed(dev_rtt)):
       if est > 0:
         final_dev = dev
         break
-    TimeoutInterval = final_est + (4 * final_dev)
-    print('Timeout Interval: {:.3f} ms\n'.format(TimeoutInterval))  
+    # Calculate timeout interval
+    # Formula from textbook, page ???
+    timeout_interval = final_est + (4 * final_dev)
+    # Print timeout interval
+    print('Timeout interval: {:.3f} ms\n'.format(timeout_interval))  
     
   # Close socket    
   socket.close()
