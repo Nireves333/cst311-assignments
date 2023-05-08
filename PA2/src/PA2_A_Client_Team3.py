@@ -58,8 +58,7 @@ def main():
           sample_rtt.append(elapsed)
           
           # Set initial ERTT or calculate current ERTT, formula taken from textbook
-          #or (i < len(estimated_rtt) and estimated_rtt[i] == 0):
-          if len(estimated_rtt) == 0: 
+          if len(estimated_rtt) == 0:
             est_elapsed = elapsed
             estimated_rtt.append(elapsed)
           else:
@@ -67,8 +66,7 @@ def main():
             estimated_rtt.append(est_elapsed)
           
           # Set initial Dev_RTT or calculate current Dev_RTT, formula taken from textbook
-          #or (i < len(dev_rtt) and dev_rtt[i] == 0):
-          if len(dev_rtt) == 0: 
+          if len(dev_rtt) == 0:
             dev_elapsed = elapsed / 2
             dev_rtt.append(dev_elapsed)
           else:
@@ -80,37 +78,40 @@ def main():
       
       # Exception happens when timeout is one second or more
       except s.timeout:
-          # Print message
-          sample_rtt.append(0)
-          estimated_rtt.append(0)
-          dev_rtt.append(0)
+          # Print message, also appends 0 to each list for accurate calculations
           print('Ping {}: Request timed out'.format(str(i)))
     
-    #DEBUG
     for i, num in enumerate(estimated_rtt):
-      print("estimated_rrt:", num)
+      print("estimated_rtt:", num)
     
     # Print summary values header
     print('Summary values:')
+    
     # Print minimum RTT value
     print('min_rtt = {:.3f} ms'.format(min(sample_rtt)))
+    
     # Print maximum RTT value
     print('max_rtt = {:.3f} ms'.format(max(sample_rtt)))
+    
     # Calculate and print mean RTT value
     mean = sum(sample_rtt) / float(len(sample_rtt))
     print('ave_rtt = {:.3f} ms'.format(mean))
+    
     # Print packet loss percentage
     print('Packet loss: {:.2f}%'.format((10 - len(sample_rtt)) * 10))
     
-    ## TODO calculate timeout interval, broken at the moment
     # Books formula: TimeoutInterval = EstimatedRTT + 4 x DevRTT
-    final_est = 0
-    final_dev = 0
-    for est, dev in zip(estimated_rtt, dev_rtt):
-      print('final est: {:.3f} ms'.format(final_est))
-      print('final_dev: {:.3f} ms'.format(final_dev))
-      final_est = final_est + est
-      final_dev = final_dev + dev
+    # TimeoutInterval grabs the last index of estimated_rtt and dev_rtt
+    # Grabs the last float that is not 0 in estimated_rtt
+    for i, est in enumerate(reversed(estimated_rtt)):
+      if est > 0:
+        final_est = est
+        break
+    # Grabs the last float that is not 0 in dev_rtt  
+    for i, dev in enumerate(reversed(dev_rtt)):
+      if est > 0:
+        final_dev = dev
+        break
     TimeoutInterval = final_est + (4 * final_dev)
     print('Timeout Interval: {:.3f} ms\n'.format(TimeoutInterval))  
     
