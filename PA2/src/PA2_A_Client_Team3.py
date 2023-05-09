@@ -89,7 +89,7 @@ def main():
     print('max_rtt = {:.3f} ms'.format(max(sample_rtt)))
     
     # Calculate and print mean RTT value
-    mean = sum(sample_rtt) / float((len(sample_rtt) - sample_rtt.count(0)))
+    mean = sum(sample_rtt) / (len(sample_rtt) - sample_rtt.count(0))
     print('ave_rtt = {:.3f} ms'.format(mean))
     
     # Print packet loss percentage
