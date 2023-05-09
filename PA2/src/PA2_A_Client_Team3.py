@@ -50,7 +50,7 @@ def main():
         sample_rtt.append(elapsed)
           
         # Set initial estimated RTT or calculate current estimated RTT and add to list
-        # Formula from textbook, page ???
+        # Formula from textbook, page 236
         if len(estimated_rtt) == 0:
           est_elapsed = elapsed
           estimated_rtt.append(est_elapsed)
@@ -59,7 +59,7 @@ def main():
           estimated_rtt.append(est_elapsed)
           
         # Set initial dev RTT or calculate current dev RTT and add to list
-        # Formula from textbook, page ???
+        # Formula from textbook, page 236
         if len(dev_rtt) == 0:
           dev_elapsed = elapsed / 2
           dev_rtt.append(dev_elapsed)
@@ -82,8 +82,10 @@ def main():
     # Print header
     print('Summary values:')
     
+    # Removes zero from sample_rtt list
+    non_zero_rtt = [num for num in sample_rtt if num != 0]
     # Print minimum RTT value
-    print('min_rtt = {:.3f} ms'.format(min(sample_rtt)))
+    print('min_rtt = {:.3f} ms'.format(min(non_zero_rtt)))
     
     # Print maximum RTT value
     print('max_rtt = {:.3f} ms'.format(max(sample_rtt)))
@@ -111,7 +113,7 @@ def main():
         final_dev = dev
         break
     # Calculate timeout interval
-    # Formula from textbook, page ???
+    # Formula from textbook, page 237
     timeout_interval = final_est + (4 * final_dev)
     # Print timeout interval
     print('Timeout interval: {:.3f} ms\n'.format(timeout_interval))  
