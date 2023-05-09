@@ -74,14 +74,10 @@ def main():
       except s.timeout:
         # Print message
         print('Ping {}: Request timed out'.format(str(i)))
-        # Add sample RTT to list
+        # Add RTT values to list
         sample_rtt.append(0)
-        # Add estimated RTT to list
-        est_elapsed = elapsed
-        estimated_rtt.append(elapsed)
-        # Add dev RTT to list
-        dev_elapsed = elapsed / 2
-        dev_rtt.append(dev_elapsed)
+        estimated_rtt.append(0)
+        dev_rtt.append(0)
     
     # Print header
     print('Summary values:')
