@@ -1,3 +1,11 @@
+# Multithreading sockets are essential for handling multiple client connections
+#  concurrently. Typically, a socket can only handle one connection at a time so
+#  multiple threads are needed to handle concurrent client connections. When the
+#  server accepts a client connection, it creates a dedicated thread to handle
+#  that connection. Threads operate independently and concurrently, processing
+#  incoming data and sending responses. This approach improves performance,
+#  response time, and overall throughput of the server.
+
 """Chat server for CST311 Programming Assignment 3"""
 __author__ = "Team 3"
 __credits__ = [
