@@ -1,4 +1,4 @@
-"""Chat client for CST311 Programming Assignment 3"""
+"""Chat client for CST311 Programming Assignment 3 Extra Credit"""
 __author__ = "Team 3"
 __credits__ = [
   "Andi Cameron",
