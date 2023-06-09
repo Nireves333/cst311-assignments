@@ -52,7 +52,6 @@ def myNetwork():
     # 254-host network with the private IPv4 address of 10.0.x.0/24. (You choose the value of x.)
     # DELETE COMMENT LATER - ANDI CHANGED - 5 -> 1
     h1 = net.addHost('h1', cls=Host, ip='10.0.1.50/24', defaultRoute='via 10.0.1.1')
-    # DELETE COMMENT LATER - ANDI QUESTION - should default route be 10.0.2.1?
     h2 = net.addHost('h2', cls=Host, ip='10.0.1.100/24', defaultRoute='via 10.0.1.1')
 
     # Hosts h3 and h4 and the router r5 interface connected to s2 will be on a network with the
