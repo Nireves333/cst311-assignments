@@ -59,6 +59,7 @@ subprocess.call(['sudo', 'chmod', '-R', '600', 'private'], cwd=working_dir)
 
 # Modify host file to include IP addresses
 subprocess.call(['sudo', 'sh', '-c', 'echo \"127.0.0.1\ca.pa4.test\" >> /etc/hosts'])
-subprocess.call(['sudo', 'sh', '-c', 'echo \"10.0.1.2\twww.webpa4.test\" >> /etc/hosts'])
+subprocess.call(['sudo', 'sh', '-c', 'echo \"10.0.1.100\twww.webpa4.test\" >> /etc/hosts'])
 
+# Print success message
 print('***Server Certificate Issued***')
