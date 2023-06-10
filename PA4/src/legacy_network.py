@@ -11,49 +11,44 @@ from mininet.net import Mininet
 from mininet.node import Controller, RemoteController, OVSController
 from mininet.node import Host, Node
 from mininet.node import OVSKernelSwitch, UserSwitch
-from mininet.node import IVSSwitch
 from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 from mininet.link import TCLink, Intf
-from subprocess import call
 
 
 def myNetwork():
-
+  
+    # Create mininet object with network configuration
     net = Mininet( topo=None,
                    build=False,
                    ipBase='10.0.0.0/24')
-
+    
+    # Add a controller to the network
     info( '*** Adding controller\n' )
     c0=net.addController(name='c0',
                       controller=Controller,
                       protocol='tcp',
                       port=6633)
-
+    
+    # Add switches to the network
     info( '*** Add switches\n')
-    # Moved addSwitch lines for instantiating switches before the routers, and changed order to s1, then s2
+    # Reordered and moved addSwitch lines for instantiating switches before the routers
     s1 = net.addSwitch('s1')
     s2 = net.addSwitch('s2')
-
-    # Re-ordered router instantiation to r3, r4, then r5. Also assigned the IP address of the first node for each router.
+    
+    # Add routers to the network
+    # Re-ordered router instantiation to r3, r4, then r5
+    # Assigned the IP address of the first node for each router
     r3 = net.addHost('r3', cls=Node, ip='10.0.1.1/24')
     r3.cmd('sysctl -w net.ipv4.ip_forward=1')
-    # r4 = net.addHost('r4', cls=Node, ip='192.168.1.2/30')
     r4 = net.addHost('r4', cls=Node, ip=['192.168.1.2/30', '192.168.1.5/30'])
     r4.cmd('sysctl -w net.ipv4.ip_forward=1')
     r5 = net.addHost('r5', cls=Node, ip='10.0.2.1/24')
     r5.cmd('sysctl -w net.ipv4.ip_forward=1')
 
     # Add host-switch links in the same subnet
-    net.addLink(s1,
-                 r3,
-                 intfName2='r3-eth0',
-                 params2={'ip': '10.0.1.1/24'})
-
-    net.addLink(s2,
-                 r5,
-                 intfName2='r5-eth0',
-                 params2={'ip': '10.0.2.1/24'})
+    net.addLink(s1, r3, intfName2='r3-eth0', params2={'ip': '10.0.1.1/24'})
+    net.addLink(s2, r5, intfName2='r5-eth0', params2={'ip': '10.0.2.1/24'})
 
     # Add router-router link in a new subnet for the router-router connection
     net.addLink(r3,
@@ -70,7 +65,7 @@ def myNetwork():
                  params1={'ip': '192.168.1.5/30'},
                  params2={'ip': '192.168.1.6/30'})
 
-    # Adding hosts specifying the default route
+    # Add hosts to the network with specified the default routes
     info('*** Add hosts\n')
     # Updated IP -
     # Hosts h1 and h2 and the router r3 interface connected to s1 will be on a
