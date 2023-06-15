@@ -19,7 +19,7 @@ log = logging.getLogger(__name__)
 log.setLevel(logging.DEBUG)
 
 # Set global variables
-server_name = 'www.chat.test'
+server_name = "www.chatserver.test"
 server_port = 12000
 
 def main():

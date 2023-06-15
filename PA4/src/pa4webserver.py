@@ -14,7 +14,9 @@ import os
 
 # Set variables used by cert.py before running
 H2IP = "10.0.1.100"
-CN = input("Enter desired Common Name (CN) [format www.example.test]: ")
+CN = "www.webtest.test"
+print("Common Name is", CN)
+
 # Generate CERTS/KEYS
 subprocess.run(['python', "/home/mininet/CST311/Assignment4/cert.py", CN, H2IP])
 

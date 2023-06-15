@@ -64,7 +64,9 @@ def main():
   
   #Generate CERTS/KEYS
   H4IP = "10.0.2.100"
-  CN = input("Enter desired Common Name (CN) [format www.example.test]: ")
+  CN = "www.chatserver.test"
+  print("Common Name is", CN)
+
   subprocess.run(['python', "/home/mininet/CST311/Assignment4/cert.py", CN, H4IP])
 
   # Convert input to remove www. and .test for key/cert file names
