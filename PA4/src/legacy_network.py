@@ -14,7 +14,8 @@ from mininet.node import OVSKernelSwitch, UserSwitch
 from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 from mininet.link import TCLink, Intf
-
+from mininet.term import makeTerm
+import time
 
 def myNetwork():
     # Create mininet object with network configuration
@@ -109,11 +110,31 @@ def myNetwork():
     net.get('s1').start([c0])
 
     info('*** Post configure switches and hosts\n')
+    # Xterm windows
+    # Start webserver via h2
+    makeTerm(h2, title='TLS-enabled webserver', term='xterm', display=None, cmd='python3 /home/mininet/CST311/Assignment4/pa4webserver.py; bash')
+    
+    # delay to allow webserver to startup fully
+    # execute wget statement on webserver
+    time.sleep(3)
+    makeTerm(h1, title='Client host 1', term='xterm', display=None, cmd='wget https://www.webtest.test:12001; bash')
+   
+    # Start chatserver via h4
+    time.sleep(3)
+    makeTerm(h4, title='TLS-enabled chat server', term='xterm', display=None, cmd='python3 /home/mininet/CST311/Assignment4/PA4_ChatServer_Team3.py; bash')
+    
+    # delay to allow chatserver to startup fully
+    # open chatclient via h1 & h3
+    # manually input text to send to server/other client
+    time.sleep(5)
+    makeTerm(h1, title='Client host 1', term='xterm', display=None, cmd='python3 /home/mininet/CST311/Assignment4/PA4_ChatClient_Team3.py; bash')
+    makeTerm(h3, title='Client host 2', term='xterm', display=None, cmd='python3 /home/mininet/CST311/Assignment4/PA4_ChatClient_Team3.py; bash')
 
     CLI(net)
     net.stop()
 
 
+    
 if __name__ == '__main__':
     setLogLevel('info')
     myNetwork()
