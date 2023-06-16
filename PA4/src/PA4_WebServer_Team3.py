@@ -18,7 +18,7 @@ CN = "www.webtest.test"
 print("Common Name is", CN)
 
 # Generate CERTS/KEYS
-subprocess.run(['python', "/home/mininet/CST311/Assignment4/cert.py", CN, H2IP])
+subprocess.run(['python', "/home/mininet/CST311/Assignment4/PA4_Cert_Team3.py", CN, H2IP])
 
 # Convert input to remove www. and .com for key/cert file names
 # Remove "www." prefix
