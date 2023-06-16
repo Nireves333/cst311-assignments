@@ -112,7 +112,7 @@ def myNetwork():
     info('*** Post configure switches and hosts\n')
     # Xterm windows
     # Start webserver via h2
-    makeTerm(h2, title='TLS-enabled webserver', term='xterm', display=None, cmd='python3 /home/mininet/CST311/Assignment4/pa4webserver.py; bash')
+    makeTerm(h2, title='TLS-enabled webserver', term='xterm', display=None, cmd='python3 /home/mininet/CST311/Assignment4/PA4_WebServer_Team3.py; bash')
     
     # delay to allow webserver to startup fully
     # execute wget statement on webserver
